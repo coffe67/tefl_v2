@@ -35,7 +35,7 @@ get_header(); ?>
 			// Display author bio
 			// See functions/commons.php
 			wpex_post_author(); ?>
-			<?php comments_template(); ?>
+			<?php //comments_template(); ?>
 			<?php wp_link_pages( array( 'before' => '<div class="page-links clr">', 'after' => '</div>', 'link_before' => '<span>', 'link_after' => '</span>' ) ); ?>
 		</div><!-- #content -->
 		<?php get_sidebar(); ?>

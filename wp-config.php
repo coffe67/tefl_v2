@@ -16,16 +16,31 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'icep_v2');
 
-/** MySQL database username */
-define('DB_USER', 'root');
+$env = 'development';
 
-/** MySQL database password */
-define('DB_PASSWORD', 'root');
+if ($env == 'production'){
+	define('DB_NAME', 'tefltrai_tefl_v2');
+	/** MySQL database username */
+	define('DB_USER', 'tefltrai_admin');
+	/** MySQL database password */
+	define('DB_PASSWORD', 'tefl2014_@');
+	/** MySQL hostname */
+	define('DB_HOST', 'localhost');
 
-/** MySQL hostname */
-define('DB_HOST', 'localhost');
+}else{
+	define('DB_NAME', 'icep_v2');
+
+	/** MySQL database username */
+	define('DB_USER', 'root');
+
+	/** MySQL database password */
+	define('DB_PASSWORD', 'root');
+
+	/** MySQL hostname */
+	define('DB_HOST', 'localhost');
+
+}
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');

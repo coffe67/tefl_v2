@@ -35,7 +35,7 @@ get_header(); ?>
 						<?php edit_post_link( __( 'Edit Page', 'wpex' ), '<span class="edit-link clr">', '</span>' ); ?>
 					</footer><!-- .entry-footer -->
 				</article><!-- #post -->
-				<?php comments_template(); ?>
+				<?php //comments_template(); ?>
 			<?php endwhile; ?>
 		</div><!-- #content -->
 		<?php get_sidebar(); ?>
