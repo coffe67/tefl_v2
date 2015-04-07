@@ -8,11 +8,33 @@
  */
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
-
+<?php
+global $qode_options_elision;
+global $wp_query;
+$disable_qode_seo = "";
+$seo_title = "";
+if (isset($qode_options_elision['disable_qode_seo'])) $disable_qode_seo = $qode_options_elision['disable_qode_seo'];
+if ($disable_qode_seo != "yes") {
+    $seo_title = get_post_meta($wp_query->get_queried_object_id(), "qode_seo_title", true);
+    $seo_description = get_post_meta($wp_query->get_queried_object_id(), "qode_seo_description", true);
+    $seo_keywords = get_post_meta($wp_query->get_queried_object_id(), "qode_seo_keywords", true);
+}
+?>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width">
 	<title><?php wp_title( '|', true, 'right' ); ?><?php bloginfo('name'); ?></title>
+    <?php if($seo_description) { ?>
+        <meta name="description" content="<?php echo $seo_description; ?>">
+    <?php } else if($qode_options_elision['meta_description']){ ?>
+        <meta name="description" content="<?php echo $qode_options_elision['meta_description'] ?>">
+    <?php } ?>
+
+    <?php if($seo_keywords) { ?>
+        <meta name="keywords" content="<?php echo $seo_keywords; ?>">
+    <?php } else if($qode_options_elision['meta_keywords']){ ?>
+        <meta name="keywords" content="<?php echo $qode_options_elision['meta_keywords'] ?>">
+    <?php } ?>
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<?php if ( get_theme_mod('wpex_custom_favicon') ) { ?>
 		<link rel="shortcut icon" href="<?php echo get_theme_mod('wpex_custom_favicon'); ?>" />

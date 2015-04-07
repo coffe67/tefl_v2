@@ -49,6 +49,7 @@ require_once ( get_template_directory() .'/functions/welcome.php' );
 /**
 	Theme Customizer
  **/
+
 // General Options
 require_once ( get_template_directory() .'/functions/theme-customizer/header.php' );
 
@@ -168,3 +169,43 @@ if ( is_admin() ) {
 	// Displays the homepage slides
 	require_once( get_template_directory() .'/functions/homepage-slider.php' );
 }
+
+/** Quode Options */
+define('QODE_ROOT', get_template_directory_uri());
+define('QODE_VAR_PREFIX', 'qode_');
+include_once('includes/shortcodes/shortcodes.php');
+include_once('includes/qode-options.php');
+include_once('includes/import/qode-import.php');
+//include_once('export/qode-export.php');
+include_once('includes/custom-fields.php');
+include_once('includes/custom-fields-post-formats.php');
+include_once('includes/navmenu/qode-menu.php');
+include_once('includes/qode-custom-sidebar.php');
+include_once('includes/qode-custom-post-types.php');
+//include_once('includes/qode-like.php' );
+//include_once('widgets/relate_posts_widget.php');
+//include_once('widgets/latest_posts_menu.php');
+//include_once('widgets/call_to_action_widget.php');
+
+/* Add admin js and css */
+
+if (!function_exists('qode_admin_jquery')) {
+    function qode_admin_jquery() {
+        wp_enqueue_script('jquery');
+        wp_enqueue_style('q_admin_style', QODE_ROOT.'/css/admin/admin-style.css', false, '1.0', 'screen');
+        wp_enqueue_style('colorstyle', QODE_ROOT.'/css/admin/colorpicker.css', false, '1.0', 'screen');
+        wp_register_script('colorpickerss', QODE_ROOT.'/js/admin/colorpicker.js', array('jquery'), '1.0.0', false );
+        wp_enqueue_script('colorpickerss');
+        wp_enqueue_style('thickbox');
+        wp_enqueue_script('media-upload');
+        wp_enqueue_script('thickbox');
+        wp_enqueue_script('jquery-ui-datepicker');
+        wp_enqueue_script('jquery-ui-accordion');
+        wp_register_script('default', QODE_ROOT.'/js/admin/default.js', array('jquery'), '1.0.0', false );
+        wp_enqueue_script('default');
+        wp_enqueue_script('common');
+        wp_enqueue_script('wp-lists');
+        wp_enqueue_script('postbox');
+    }
+}
+add_action('admin_enqueue_scripts', 'qode_admin_jquery');
