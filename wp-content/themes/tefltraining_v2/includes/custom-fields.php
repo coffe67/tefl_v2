@@ -5,6 +5,7 @@ if ( !class_exists('myCustomFields') ) {
 		/**
 		* @var  string  $prefix  The prefix for storing custom fields in the postmeta table
 		*/
+        //var $prefix = '';
 		var $prefix = 'qode_';
 		/**
 		* @var  array  $postTypes  An array of public custom post types, plus the standard "post" and "page" - add the custom types you want to include here
@@ -560,7 +561,7 @@ if ( !class_exists('myCustomFields') ) {
 			add_action( 'admin_menu', array( &$this, 'createCustomFields' ) );
 			add_action( 'save_post', array( &$this, 'saveCustomFields' ), 1, 2 );
 			// Comment this line out if you want to keep default custom fields meta box
-			add_action( 'do_meta_boxes', array( &$this, 'removeDefaultCustomFields' ), 10, 3 );
+			//add_action( 'do_meta_boxes', array( &$this, 'removeDefaultCustomFields' ), 10, 3 );
 		}
 		/**
 		* Remove the default Custom Fields meta box
@@ -579,11 +580,11 @@ if ( !class_exists('myCustomFields') ) {
 			if ( function_exists( 'add_meta_box' ) ) {
 				foreach ( $this->postTypes as $postType ) {
 					//add_meta_box( 'my-custom-fields', 'Qode Custom Fields', array( &$this, 'displayCustomFields' ), $postType, 'normal', 'high' );
-                    add_meta_box( 'my-custom-seo', 'Qode SEO Fields', array( &$this, 'displayCustomSeo' ), $postType, 'normal', 'high' );
-                    if($postType != "testimonials" && $postType != "slides" && $postType != "carousels") {
+                    //add_meta_box( 'my-custom-seo', 'SEO Fields', array( &$this, 'displayCustomSeo' ), $postType, 'normal', 'low' );
+                    /*if($postType != "testimonials" && $postType != "slides" && $postType != "carousels") {
 						add_meta_box( 'my-custom-portfolio', 'Qode Portfolio', array( &$this, 'displayCustomPortfolio' ), 'portfolio_page', 'normal', 'high' );
-						//add_meta_box( 'my-custom-seo', 'Qode SEO Fields', array( &$this, 'displayCustomSeo' ), $postType, 'normal', 'high' );
-					}
+						add_meta_box( 'my-custom-seo', 'Qode SEO Fields', array( &$this, 'displayCustomSeo' ), $postType, 'normal', 'high' );
+					}*/
 				}
 			}
 		}
@@ -1271,7 +1272,8 @@ $portfolio_date = get_post_meta( $post->ID, $this->prefix . 'portfolio_date', tr
 			$seo_title = $_POST['seo_title'];
 			$seo_description = $_POST['seo_description'];
 			$seo_keywords = $_POST['seo_keywords'];
-			if ( current_user_can( $customField['capability'], $post_id ) ) {
+
+			//if ( current_user_can( $customField['capability'], $post_id ) ) {
 				if ($seo_title) {
 						update_post_meta( $post_id, $this->prefix . 'seo_title', $seo_title );
 				} else {
@@ -1287,7 +1289,7 @@ $portfolio_date = get_post_meta( $post->ID, $this->prefix . 'portfolio_date', tr
 				} else {
 					delete_post_meta( $post_id, $this->prefix . 'seo_keywords' );
 				}
-			}
+			//}
 		}
 		
 		

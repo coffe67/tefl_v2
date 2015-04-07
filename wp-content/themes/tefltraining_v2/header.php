@@ -23,7 +23,12 @@ if ($disable_qode_seo != "yes") {
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width">
-	<title><?php wp_title( '|', true, 'right' ); ?><?php bloginfo('name'); ?></title>
+    <?php if ($seo_title){ ?>
+        <title><?php echo $seo_title.' | '; ?><?php bloginfo('name'); ?></title>
+    <?php }else{ ?>
+        <title><?php wp_title( '|', true, 'right' ); ?><?php bloginfo('name'); ?></title>
+    <?php } ?>
+
     <?php if($seo_description) { ?>
         <meta name="description" content="<?php echo $seo_description; ?>">
     <?php } else if($qode_options_elision['meta_description']){ ?>
@@ -42,6 +47,24 @@ if ($disable_qode_seo != "yes") {
 	<!--[if lt IE 9]>
 		<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js"></script>
 	<![endif]-->
+    <!-- FavIcon -->
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo $qode_options_elision['favicon_image']; ?>">
+	<link rel="apple-touch-icon" href="<?php echo $qode_options_elision['favicon_image']; ?>"/>
+
+    <link rel="apple-touch-icon" sizes="57x57" href="<?php echo get_template_directory_uri();?>/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="<?php echo get_template_directory_uri();?>/favicons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="<?php echo get_template_directory_uri();?>/favicons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="<?php echo get_template_directory_uri();?>/favicons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="<?php echo get_template_directory_uri();?>/favicons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="<?php echo get_template_directory_uri();?>/favicons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="<?php echo get_template_directory_uri();?>/favicons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="<?php echo get_template_directory_uri();?>/favicons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_template_directory_uri();?>/favicons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="<?php echo get_template_directory_uri();?>/favicons/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="<?php echo get_template_directory_uri();?>/favicons/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="<?php echo get_template_directory_uri();?>/favicons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="<?php echo get_template_directory_uri();?>/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="<?php echo get_template_directory_uri();?>/favicons/favicon-32x32.png" sizes="32x32">
 	<?php wp_head(); ?>
 </head>
 

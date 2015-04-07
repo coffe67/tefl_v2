@@ -12,7 +12,7 @@ if (!function_exists('create_post_type')) {
 				$slug = $qode_options_elision['portfolio_single_slug'];
 			}
 		}
-		register_post_type( 'portfolio_page',
+		/*register_post_type( 'portfolio_page',
 			array(
 				'labels' => array(
 					'name' => __( 'Portfolio','qode' ),
@@ -48,9 +48,9 @@ if (!function_exists('create_post_type')) {
 				'hierarchical'	=>	false,
 		  		'supports'		=>	array('title', 'thumbnail')
 			)
-		);
+		);*/
 		
-		register_post_type('slides',
+		/*register_post_type('slides',
 			array(
 				'labels' 		=> array(
 				'name' 				=> __('Qode Slider','qode' ),
@@ -73,9 +73,9 @@ if (!function_exists('create_post_type')) {
 				'supports'		=>	array('title', 'thumbnail', 'page-attributes'),
 				'menu_icon'  =>  QODE_ROOT.'/img/favicon.ico'
 			)
-		);
+		);*/
 
-	  register_post_type('carousels',
+	  /*register_post_type('carousels',
 			array(
 				'labels'    => array(
 				'name'        => __('Qode Carousel','qode' ),
@@ -98,7 +98,7 @@ if (!function_exists('create_post_type')) {
 				'supports'    =>  array('title'),
 				'menu_icon'  =>  QODE_ROOT.'/img/favicon.ico'
 			)
-	  );
+	  );*/
 		
 	/* Create Portfolio Categories */
 
